@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Gradient Theme - Purple to Blue with Dark Backgrounds */
+
+@layer base {
+  :root {
+    /* Modern gradient background system */
+    --background: 220 13% 9%;
+    --background-secondary: 220 13% 12%;
+    --foreground: 210 40% 98%;
+
+    /* Card system with glassmorphism */
+    --card: 220 13% 12%;
+    --card-foreground: 210 40% 98%;
+    --card-glass: 220 13% 15%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Modern purple-blue gradient primary */
+    --primary: 270 91% 65%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 270 91% 70%;
+    --primary-dark: 270 91% 55%;
+
+    /* Accent blue */
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 210 40% 98%;
+    --secondary-glow: 217 91% 65%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 270 91% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 18%;
+    --input: 220 13% 15%;
+    --ring: 270 91% 65%;
+
+    --radius: 0.75rem;
+
+    /* Modern gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 65%), hsl(217 91% 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(217 91% 60%), hsl(270 91% 65%));
+    --gradient-background: linear-gradient(180deg, hsl(220 13% 9%), hsl(220 13% 12%));
+    --gradient-card: linear-gradient(135deg, hsl(220 13% 12% / 0.8), hsl(220 13% 15% / 0.9));
+    
+    /* Glow effects */
+    --glow-primary: 0 0 40px hsl(270 91% 65% / 0.3);
+    --glow-secondary: 0 0 40px hsl(217 91% 60% / 0.3);
+    --shadow-glass: 0 8px 32px hsl(220 13% 6% / 0.4);
+
+    /* Transition system */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .light {
+    --background: 210 40% 98%;
+    --background-secondary: 210 40% 96%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --card-glass: 0 0% 98%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 270 91% 65%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 270 91% 70%;
+    --primary-dark: 270 91% 55%;
+
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 210 40% 98%;
+    --secondary-glow: 217 91% 65%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 270 91% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 270 91% 65%;
+
+    --gradient-background: linear-gradient(180deg, hsl(210 40% 98%), hsl(210 40% 96%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 0.9), hsl(210 40% 98% / 0.9));
+    
+    --glow-primary: 0 0 40px hsl(270 91% 65% / 0.2);
+    --glow-secondary: 0 0 40px hsl(217 91% 60% / 0.2);
+    --shadow-glass: 0 8px 32px hsl(220 13% 15% / 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    min-height: 100vh;
+    transition: var(--transition-smooth);
+  }
+}
+
+@layer components {
+  /* Glassmorphism card effect */
+  .glass-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Modern button with glow effect */
+  .glow-button {
+    background: var(--gradient-primary);
+    box-shadow: var(--glow-primary);
+    transition: var(--transition-smooth);
+  }
+
+  .glow-button:hover {
+    box-shadow: var(--glow-primary), 0 0 20px hsl(var(--primary) / 0.4);
+    transform: translateY(-1px);
+  }
+
+  /* Chat message animations */
+  .message-slide-in {
+    animation: slideInMessage 0.4s ease-out forwards;
+  }
+
+  .message-slide-in-delay {
+    animation: slideInMessage 0.4s ease-out 0.1s both;
+  }
+
+  /* Typing indicator animation */
+  .typing-dots {
+    animation: typingPulse 1.4s infinite ease-in-out;
+  }
+
+  .typing-dots:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .typing-dots:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  /* Focus glow effect for inputs */
+  .input-glow:focus {
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.2), var(--glow-primary);
+    border-color: hsl(var(--primary));
+  }
+
+  /* Smooth page transitions */
+  .page-transition {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  /* Animation keyframes */
+  @keyframes slideInMessage {
+    from {
+      opacity: 0;
+      transform: translateX(-20px) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes typingPulse {
+    0%, 80%, 100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    40% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: var(--glow-primary);
+    }
+    50% {
+      box-shadow: var(--glow-primary), 0 0 30px hsl(var(--primary) / 0.6);
+    }
+  }
+
+  @keyframes bounce-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
